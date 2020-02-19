@@ -1,4 +1,4 @@
-# Contributing to Salesforce DX (SFDX) Status for fish Pure Prompt
+# Contributing to Salesforce DX (SFDX) Status for fish
 I'm happy about any ideas, suggestions for enhancements or contributions of code you might have!
 
 # Reporting a Bug
@@ -8,7 +8,6 @@ If you think you have found a bug, please
 - Create a new GitHub issue providing
 	- Your terminal version
 	- Your fish version
-	- Your Pure Prompt
 	- Your SFDX version
 	- An explanation of the bug, providing the exact steps if it is reproducible
 	- Your expected behavior

@@ -1,17 +1,16 @@
-# Salesforce DX (SFDX) Status for fish Pure Prompt
-Adds the status of Salesforce DX projects to your fish prompt, based on [Pure Prompt](https://github.com/rafaelrinaldi/pure).
+# Salesforce DX (SFDX) Status for fish
+Adds the status of Salesforce DX projects to your fish prompt. Compatible with other prompts, e.g. Pure.
 
 ## Requirements
 
 - [fish](https://github.com/fish-shell/fish-shell)
-- [Pure Prompt](https://github.com/rafaelrinaldi/pure)
 
 ## Installation
 
-- Copy `_pure_prompt_sfdx.fish` to `~/.config/fish/functions/`
-- Copy `_pure_prompt_first_line.fish` to `~/.config/fish/functions/` (replace existing file)
+- Copy `_prompt_sfdx.fish` to `~/.config/fish/functions/`
+- Copy `fish_prompt.fish` to `~/.config/fish/functions/` (replace existing file, backup before)
 
-**Note** You may also modify `_pure_prompt_first_line.fish` instead of replacing it. `_pure_prompt_first_line.fish` is overwritten with any update of Pure Prompt or updates via Fisher and needs to be restored.
+**Note** You may also modify `fish_prompt.fish` instead of replacing it.
 
 ## Usage
 
