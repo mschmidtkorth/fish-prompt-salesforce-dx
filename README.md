@@ -8,7 +8,9 @@ Adds the status of Salesforce DX projects to your fish prompt. Compatible with o
 ## Installation
 
 - Copy `_prompt_sfdx.fish` to `~/.config/fish/functions/`
-- Copy `fish_prompt.fish` to `~/.config/fish/functions/` (replace existing file, backup before)
+- If you are using [Pure](https://github.com/rafaelrinaldi/pure) prompt: Copy `fish_prompt.fish_pure` to `~/.config/fish/functions/` and rename to `fish_prompt.fish` (replace existing file, backup before)
+- If you are using [bobthefish](https://github.com/oh-my-fish/theme-bobthefish) prompt: Copy `fish_prompt.fish_bobthefish` to `~/.config/fish/functions/` and rename to `fish_prompt.fish` (replace existing file, backup before)
+- If you are using any other prompt or the default fish prompt: Put `echo -e -n (_prompt_sfdx)` wherever you would like to see the output in `~/.config/fish/functions/fish_prompt.fish`
 
 **Note** You may also modify `fish_prompt.fish` instead of replacing it.
 
@@ -16,7 +18,11 @@ Adds the status of Salesforce DX projects to your fish prompt. Compatible with o
 
 - Simply open any directory that contains a `.force` folder and watch your prompt change
 
-![Example prompt](Example.png)
+Pure prompt:
+![Example with Pure prompt](Example.png)
+
+bobthefish prompt:
+![Example with bobthefish prompt](Example2.png)
 
 **Note** The iTerm2 status bar component at the bottom can be found [here](https://github.com/mschmidtkorth/iTerm-salesforce-dx).
 

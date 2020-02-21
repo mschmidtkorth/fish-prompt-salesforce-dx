@@ -1,3 +1,4 @@
+# Prompt working together with Pure Prompt
 function fish_prompt
     set --local exit_code $status  # save previous exit code
 
