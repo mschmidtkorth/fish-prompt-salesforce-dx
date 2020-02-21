@@ -18,8 +18,10 @@ Adds the status of Salesforce DX projects to your fish prompt. Compatible with o
 
 - Simply open any directory that contains a `.force` folder and watch your prompt change
 
+Pure prompt:
 ![Example with Pure prompt](Example.png)
 
+bobthefish prompt:
 ![Example with bobthefish prompt](Example2.png)
 
 **Note** The iTerm2 status bar component at the bottom can be found [here](https://github.com/mschmidtkorth/iTerm-salesforce-dx).
