@@ -1101,8 +1101,11 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
         __bobthefish_prompt_dir $real_pwd
     end
 
-	 # MSK Add prompt_sfdx
-	__bobthefish_start_segment 489cdc
-	echo -e -n (_prompt_sfdx)
+	# MSK Add prompt_sfdx
+    _prompt_sfdx_configDir
+    if test -e $configDir/sfdx-project.json
+        __bobthefish_start_segment 489cdc
+        echo -e -n (_prompt_sfdx)
+    end
     __bobthefish_finish_segments
 end

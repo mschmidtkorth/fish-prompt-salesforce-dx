@@ -7,7 +7,7 @@ function _prompt_sfdx \
 
     if test -e $configDir/sfdx-project.json # Is current dir a SFDX project (sub)directory?
         #------- Create global variables
-        set -g nerdFonts no
+        set -g nerdFonts no # Enable if you have nerd fonts installed
         set -g aliasOrUsername (_prompt_sfdx_aliasOrUsername)
         set -g usernameForAlias (_prompt_sfdx_usernameForAlias)
 
@@ -28,13 +28,15 @@ function _prompt_sfdx \
         # end
 
         #------- Generate prompt output
-        if test $nerdFonts = yes # TODO: Implement arrow segmentation using unicode glyphs
+        if test $nerdFonts = yes # ^= used with bobthefish
             set sfdx_prompt (set_color 489cdc)$right_arrow_glyph (set_color white -b 489cdc) \uf01a $sfdx_prompt_aliasOrUsername $sfdx_prompt_username (set_color 489cdc)$right_black_arrow_glyph #$sfdx_prompt_expiration
         else
             set sfdx_prompt (set_color white -b 489cdc) \u2601 $sfdx_prompt_aliasOrUsername$sfdx_prompt_username #$sfdx_prompt_expiration
             # TODO: MesloLGS NF (Nerd Font) makes the unicode characters appear tiny (eg Cloud)
         end
-        echo " " $sfdx_prompt" "
+        if test $nerdFonts = no # not used with bobthefish
+            echo " " $sfdx_prompt" "
+        end
     end
 end
 
