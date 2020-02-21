@@ -3,11 +3,11 @@
 function _prompt_sfdx \
     -d 'Print sfdx scratch information: Default alias and username, expiration date of default alias/username\'s org'
 
-    set -g configDir (_prompt_sfdx_configDir)
+    _prompt_sfdx_configDir
 
     if test -e $configDir/sfdx-project.json # Is current dir a SFDX project (sub)directory?
         #------- Create global variables
-        set -g nerdFonts no
+        set -g nerdFonts yes # For bobthefish/Pure prompt: yes
         set -g aliasOrUsername (_prompt_sfdx_aliasOrUsername)
         set -g usernameForAlias (_prompt_sfdx_usernameForAlias)
 
@@ -28,13 +28,17 @@ function _prompt_sfdx \
         # end
 
         #------- Generate prompt output
-        if test $nerdFonts = yes # TODO: Implement arrow segmentation using unicode glyphs
-            set sfdx_prompt (set_color 489cdc)$right_arrow_glyph (set_color white -b 489cdc) \uf01a $sfdx_prompt_aliasOrUsername $sfdx_prompt_username (set_color 489cdc)$right_black_arrow_glyph #$sfdx_prompt_expiration
+        if test $nerdFonts = yes
+            # set sfdx_prompt (set_color 489cdc)$right_arrow_glyph (set_color white -b 489cdc) \uf01a $sfdx_prompt_aliasOrUsername $sfdx_prompt_username (set_color 489cdc)$right_black_arrow_glyph # For Pure prompt with MesloLGS NF
+            set sfdx_prompt (set_color white -b 489cdc) \uf0c2 $sfdx_prompt_aliasOrUsername $sfdx_prompt_username # For bobthefish prompt with Hack Nerd Font
         else
             set sfdx_prompt (set_color white -b 489cdc) \u2601 $sfdx_prompt_aliasOrUsername$sfdx_prompt_username #$sfdx_prompt_expiration
-            # TODO: MesloLGS NF (Nerd Font) makes the unicode characters appear tiny (eg Cloud)
         end
-        echo " " $sfdx_prompt" "
+            if test $nerdFonts = no # not used with bobthefish
+                echo " " $sfdx_prompt" " # For Pure prompt
+            else
+                echo -en $sfdx_prompt # For bobthefish prompt
+            end
     end
 end
 
@@ -71,14 +75,5 @@ function _prompt_sfdx_orgExpiration \
         echo (command sfdx force:org:display --targetusername=$aliasOrUsername --json 2>&1 | jq -r 'if .status == 1 then "error" elif .result.status == "Active" then .result.expirationDate elif .result.status == "Expired" then "expired" else "sbx" end' 2>/dev/null)
     else
         echo false
-    end
-end
-
-function _prompt_sfdx_configDir \
-    -d 'Get root project folder of current project.'
-    if string match -q -r 'force-app' $PWD # If $PWD contains force-app, we are in a subdirectory
-        echo (string replace -r 'force-app.*' '' -- $PWD)
-    else
-        echo $PWD
     end
 end
